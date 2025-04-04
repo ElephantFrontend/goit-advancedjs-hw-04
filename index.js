@@ -1,24 +1,26 @@
-import{i as a,S as m}from"./assets/vendor-B07T6_gy.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const s of t.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&n(s)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function n(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}})();const l={input:document.querySelector(".search-input"),list:document.querySelector(".gallery"),form:document.querySelector(".form"),loader:document.querySelector(".loader")},d={BASE_URL:"https://pixabay.com/api/",API_KEY:"49425225-4fab9228e9772b9206d5850f9",IMAGE_TYPE:"photo",ORIENTATION:"horizontal",SEFESEARCH:!0},{BASE_URL:p,API_KEY:h,IMAGE_TYPE:g,ORIENTATION:y,SEFESEARCH:E}=d;function b(o){return o?(l.loader.classList.remove("hidden"),fetch(`${p}?key=${h}&q=${o}&image_type=${g}&orientation=${y}&safesearch=${E}`).then(r=>{if(!r.ok)throw new Error(`Error data: ${r.status}`);return r.json()}).then(r=>r.hits.length===0?(a.error({title:"Error",message:"Sorry, there are no images matching your search path. Please try again!"}),[]):r.hits).catch(r=>{a.error({title:"Error",message:"Something went wrong. Please try again!"}),console.log(r)}).finally(()=>{l.loader.classList.add("hidden")})):(a.error({title:"Error",message:"Please enter a valid search path!"}),Promise.resolve([]))}function S(o){return o.map(({webformatURL:i,largeImageURL:n,tags:e,likes:t,views:s,comments:u,downloads:f})=>`
-		    <li class="gallery-item">
-			    <a class="gallery-link" href="${n}">
+var v=Object.defineProperty;var x=(r,e,a)=>e in r?v(r,e,{enumerable:!0,configurable:!0,writable:!0,value:a}):r[e]=a;var f=(r,e,a)=>x(r,typeof e!="symbol"?e+"":e,a);import{a as g,i as p,S as w}from"./assets/vendor-tK733MBj.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const o of t)if(o.type==="childList")for(const c of o.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function a(t){const o={};return t.integrity&&(o.integrity=t.integrity),t.referrerPolicy&&(o.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?o.credentials="include":t.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function s(t){if(t.ep)return;t.ep=!0;const o=a(t);fetch(t.href,o)}})();const n={searchForm:document.querySelector(".form"),gallery:document.querySelector(".gallery"),notFoundText:document.querySelector(".not-found-text"),loader:document.querySelector(".loader"),loadMoreBtn:document.querySelector(".load-more")},d="active",i={query:"",page:1,perPage:15,maxPage:1},u=class u{constructor(e){e&&(this.button=e)}disable(){this.button.classList.add(u.HIDDEN_CLASS)}enable(){this.button.classList.remove(u.HIDDEN_CLASS)}};f(u,"HIDDEN_CLASS","hidden");let m=u;const l=new m(n.loadMoreBtn);g.defaults.baseURL="https://pixabay.com/api/";g.defaults.params={key:"49425225-4fab9228e9772b9206d5850f9",image_type:"photo",orientation:"horizontal",safesearch:!0};async function h(r,e=1,a=15){try{const s=await g.get("",{params:{q:r,page:e,per_page:a}}),{hits:t,total:o,totalHits:c}=s.data;return{hits:t,total:o,totalHits:c}}catch{throw new Error("Something went wrong while fetching images...")}}const y=r=>r.hits.map(({webformatURL:a,largeImageURL:s,tags:t,likes:o,views:c,comments:L,downloads:S})=>`
+      <li class="gallery-item">
+			    <a class="gallery-link" href="${s}">
 				    <img
 					    class="gallery-image"
-					    src="${i}"
-					    alt="${e}"
+					    src="${a}"
+					    alt="${t}"
 					  />
 			    </a>
           <div class="info">
             <p class="info-item">
-              <b>Likes:</b> ${t}
+              <b>Likes:</b> ${o}
             </p>
             <p class="info-item">
-              <b>Views:</b> ${s}
+              <b>Views:</b> ${c}
             </p>
             <p class="info-item">
-              <b>Comments:</b> ${u}
+              <b>Comments:</b> ${L}
             </p>
             <p class="info-item">
-              <b>Downloads:</b> ${f}
+              <b>Downloads:</b> ${S}
             </p>
-		    </li>`).join("")}const{form:L,input:$,list:c}=l;let P=new m(".gallery-link",{captionsData:"alt",captionDelay:250});L.addEventListener("submit",o=>{o.preventDefault();const r=$.value.trim();c.innerHTML="",b(r).then(i=>{c.innerHTML=S(i),P.refresh()}).catch(i=>console.log(i))});
+          </div>
+		    </li>
+      `).join("");async function P(r){r.preventDefault(),n.notFoundText.textContent="",n.gallery.innerHTML="",l.disable(),i.page=1,i.maxPage=1;const e=r.currentTarget,a=e.elements.search.value.trim();if(!a){p.error({title:"Error",message:"Please enter a valid search query!"});return}n.loader.classList.add(d);try{const s=await h(a);if(n.loader.classList.remove(d),!s.hits||s.hits.length===0){n.notFoundText.innerHTML=`Sorry, there are no images matching your search <span class ="impotent">${userQuery}</span>. Please try again!`;return}i.query=a,i.maxPage=Math.ceil(s.totalHits/i.perPage),n.gallery.innerHTML=y(s),i.maxPage>1&&l.enable()}catch(s){n.loader.classList.remove(d),p.error({title:"Error",message:`Error: ${s}`})}finally{e.reset()}}function q(){const r=n.gallery.querySelector(".gallery-item");if(!r)return;const{height:e}=r.getBoundingClientRect();scrollBy({top:e*2,behavior:"smooth"})}async function T(r){i.page+=1,l.disable(),n.loader.classList.add(d);try{const{query:e,page:a,perPage:s}=i,t=await h(e,a,s);n.gallery.insertAdjacentHTML("beforeend",y(t)),n.loader.classList.remove(d),l.enable(),q(),i.page<i.maxPage?l.enable():(l.disable(),n.notFoundText.textContent="We're sorry, but you've reached the end of search results..")}catch{l.disable()}}let b=new w(".gallery-link",{captionsData:"alt",captionDelay:250});n.searchForm.addEventListener("submit",async r=>{await P(r),b.refresh()});l.button.addEventListener("click",async()=>{await T(),b.refresh()});
 //# sourceMappingURL=index.js.map
