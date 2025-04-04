@@ -1,8 +1,19 @@
-function renderImages (images) {
-  const markup = images
-    .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
-      return `
-		    <li class="gallery-item">
+export const cardsImg = data => {
+  const images = data.hits;
+
+  return images
+    .map(
+      ({
+         webformatURL,
+         largeImageURL,
+         tags,
+         likes,
+         views,
+         comments,
+         downloads,
+       }) => {
+        return `
+      <li class="gallery-item">
 			    <a class="gallery-link" href="${largeImageURL}">
 				    <img
 					    class="gallery-image"
@@ -23,10 +34,10 @@ function renderImages (images) {
             <p class="info-item">
               <b>Downloads:</b> ${downloads}
             </p>
-		    </li>`;
-    });
-
-  return markup.join('');
-}
-
-export default renderImages;
+          </div>
+		    </li>
+      `;
+      }
+    )
+    .join('');
+};

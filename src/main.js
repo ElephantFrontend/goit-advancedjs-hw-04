@@ -1,24 +1,20 @@
-import { refs } from "./js/refs";
-import fetchImages from "./js/pixabay-api";
-import renderImages from "./js/render-functions";
-import SimpleLightbox from "simplelightbox";
-
-const { form, input, list } = refs;
+import SimpleLightbox from 'simplelightbox';
+import handleSearch from './js/form';
+import loadMoreBtn from './js/button-handler.js';
+import handleLoadMore from './js/load.js';
+import { refs } from './js/refs.js';
 
 let lightbox = new SimpleLightbox('.gallery-link', {
   captionsData: 'alt',
   captionDelay: 250,
 });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const inputValue = input.value.trim();
-  list.innerHTML = "";
+refs.searchForm.addEventListener('submit', async event => {
+  await handleSearch(event);
+  lightbox.refresh();
+});
 
-  fetchImages(inputValue)
-    .then((images) => {
-      list.innerHTML = renderImages(images);
-      lightbox.refresh();
-    })
-    .catch((error) => console.log(error));
+loadMoreBtn.button.addEventListener('click', async () => {
+  await handleLoadMore();
+  lightbox.refresh();
 });
