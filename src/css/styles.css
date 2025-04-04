@@ -1,0 +1,93 @@
+@import url('izitoast/dist/css/iziToast.min.css');
+@import url("simplelightbox/dist/simple-lightbox.min.css");
+
+* {
+  font-family: Montserrat, sans-serif;
+}
+.main {
+  margin: 0 auto;
+}
+
+.form {
+  margin-top: 8px;
+}
+
+.loader {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 20px;
+  color:#0000;
+  background: linear-gradient(90deg,#000 calc(50% - 0.5ch),#C02942 0 calc(50% + 0.5ch),#000 0) right/calc(200% + 1ch) 100%;
+  background-clip:text;
+  animation: l8 2s infinite steps(11);
+}
+
+@keyframes l8 {to{background-position: left}}
+
+.hidden {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  padding: 4px 8px;
+}
+
+.button {
+  padding: 4px 10px;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 270px);
+  grid-auto-rows: 230px;
+  gap: 10px;
+  padding-left: 0;
+}
+
+.gallery-item {
+  position: relative;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  box-sizing: border-box;
+  background-color: white;
+  height: 40px;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+}
